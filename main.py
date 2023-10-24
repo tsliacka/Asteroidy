@@ -51,6 +51,10 @@ def update():
     if perfectShip.collide_pixel(asteroid):
         sounds.asteroid_explosion.play()
 
+    for b in bullets:
+        if b.collide_pixel(asteroid):
+            sounds.asteroid_explosion.play()
+
 def draw():
     screen.clear()
     perfectShip.draw()
