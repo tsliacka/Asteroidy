@@ -16,6 +16,7 @@ bullets = []
 img = pygame.image.load('images/space.png')
 
 score = 0
+bestScore = 0
 
 def on_key_down(key):
     #otacanie
@@ -60,6 +61,9 @@ def update():
         if perfectShip.collide_pixel(a):
             sounds.asteroid_explosion.play()
             global score
+            global bestScore
+            if score > bestScore:
+                bestScore = score
             score = 0
 
     #kolizia - naboj + asteroid
@@ -88,5 +92,5 @@ def draw():
         a.draw()
 
     screen.draw.text('skore: ' + str(score), (WIDTH / 2, 10))
-
+    screen.draw.text('best skore: ' + str(bestScore), (WIDTH / 2 - 20, 30))
 pgzrun.go()
