@@ -32,7 +32,7 @@ def on_key_up(key):
         perfectShip.accelerate = 0
 
 def update():
-    perfectShip.update()
+    perfectShip.update(WIDTH, HEIGHT)
 
 def draw():
     screen.clear()
