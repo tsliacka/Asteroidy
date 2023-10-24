@@ -1,5 +1,6 @@
 import pgzrun
 import pygame
+import random
 
 from ship import Ship
 from asteroid import Asteroid
@@ -10,7 +11,7 @@ HEIGHT = 500
 TITLE = 'Asteroidky'
 
 perfectShip = Ship(WIDTH/2, HEIGHT/2)
-asteroid = Asteroid(5, 5)
+asteroids = []
 bullets = []
 img = pygame.image.load('images/space.png')
 
@@ -45,27 +46,38 @@ def on_key_up(key):
 
 def update():
     perfectShip.update(WIDTH, HEIGHT)
-    asteroid.update(WIDTH, HEIGHT)
 
     for b in bullets:
         b.update()
 
-    #kolizia - asteroid + lod
-    if perfectShip.collide_pixel(asteroid):
-        sounds.asteroid_explosion.play()
+    for a in asteroids:
+        a.update(WIDTH, HEIGHT)
 
-    for b in bullets:
-        if b.collide_pixel(asteroid):
+    #kolizia - asteroid + lod
+    for a in asteroids:
+        if perfectShip.collide_pixel(a):
             sounds.asteroid_explosion.play()
+
+    #kolizia - naboj + asteroid
+    for b in bullets:
+        for a in asteroids:
+            if b.collide_pixel(a):
+                sounds.asteroid_explosion.play()
+
+    #nahodne vytvaranie asteroidov
+    if random.randint(0, 150) == 5:
+        a = Asteroid(0, 0)
+        asteroids.append(a)
 
 def draw():
     screen.clear()
     screen.blit(img, (0, 0))
     perfectShip.draw()
-    asteroid.draw()
 
     for b in bullets:
         b.draw()
 
+    for a in asteroids:
+        a.draw()
 
 pgzrun.go()
