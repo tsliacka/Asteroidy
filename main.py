@@ -12,9 +12,15 @@ def on_key_down(key):
     if key == keys.RIGHT:
         perfectShip.turning = -5
 
+    if key == keys.LEFT:
+        perfectShip.turning = 5
+
 def on_key_up(key):
     #otacanie
     if key == keys.RIGHT:
+        perfectShip.turning = 0
+
+    if key == keys.LEFT:
         perfectShip.turning = 0
 
 def update():
