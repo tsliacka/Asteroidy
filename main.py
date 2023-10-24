@@ -47,6 +47,10 @@ def update():
     for b in bullets:
         b.update()
 
+    #kolizia - asteroid + lod
+    if perfectShip.collide_pixel(asteroid):
+        sounds.asteroid_explosion.play()
+
 def draw():
     screen.clear()
     perfectShip.draw()
