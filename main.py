@@ -7,7 +7,7 @@ WIDTH = 900
 HEIGHT = 500
 
 perfectShip = Ship(WIDTH/2, HEIGHT/2)
-asteroid = Asteroid()
+asteroid = Asteroid(5, 5)
 
 def on_key_down(key):
     #otacanie
@@ -35,6 +35,7 @@ def on_key_up(key):
 
 def update():
     perfectShip.update(WIDTH, HEIGHT)
+    asteroid.update(WIDTH, HEIGHT)
 
 def draw():
     screen.clear()
