@@ -15,6 +15,8 @@ asteroids = []
 bullets = []
 img = pygame.image.load('images/space.png')
 
+score = 0
+
 def on_key_down(key):
     #otacanie
     if key == keys.RIGHT:
@@ -57,6 +59,8 @@ def update():
     for a in asteroids:
         if perfectShip.collide_pixel(a):
             sounds.asteroid_explosion.play()
+            global score
+            score = 0
 
     #kolizia - naboj + asteroid
     for b in bullets:
@@ -65,6 +69,7 @@ def update():
                 sounds.asteroid_explosion.play()
                 bullets.remove(b)
                 asteroids.remove(a)
+                score += 1
 
     #nahodne vytvaranie asteroidov
     if random.randint(0, 150) == 5:
@@ -81,5 +86,7 @@ def draw():
 
     for a in asteroids:
         a.draw()
+
+    screen.draw.text('skore: ' + str(score), (WIDTH / 2, 10))
 
 pgzrun.go()
