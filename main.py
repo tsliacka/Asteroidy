@@ -37,7 +37,7 @@ def on_key_up(key):
 
     #naboje
     if key == keys.SPACE:
-        b = Bullet(perfectShip.x, perfectShip.y)
+        b = Bullet(perfectShip.x, perfectShip.y, perfectShip.angle)
         bullets.append(b)
 
 def update():
