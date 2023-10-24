@@ -1,4 +1,5 @@
 import pgzrun
+import pygame
 
 from ship import Ship
 from asteroid import Asteroid
@@ -6,10 +7,12 @@ from bullet import Bullet
 
 WIDTH = 900
 HEIGHT = 500
+TITLE = 'Asteroidky'
 
 perfectShip = Ship(WIDTH/2, HEIGHT/2)
 asteroid = Asteroid(5, 5)
 bullets = []
+img = pygame.image.load('images/space.png')
 
 def on_key_down(key):
     #otacanie
@@ -57,6 +60,7 @@ def update():
 
 def draw():
     screen.clear()
+    screen.blit(img, (0, 0))
     perfectShip.draw()
     asteroid.draw()
 
