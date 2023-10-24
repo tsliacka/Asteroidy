@@ -15,6 +15,10 @@ def on_key_down(key):
     if key == keys.LEFT:
         perfectShip.turning = 5
 
+    #pohyb vpred
+    if key == keys.UP:
+        perfectShip.accelerate = 1
+
 def on_key_up(key):
     #otacanie
     if key == keys.RIGHT:
@@ -22,6 +26,10 @@ def on_key_up(key):
 
     if key == keys.LEFT:
         perfectShip.turning = 0
+
+    #pohyb vpred
+    if key == keys.UP:
+        perfectShip.accelerate = 0
 
 def update():
     perfectShip.update()
