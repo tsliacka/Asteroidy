@@ -63,6 +63,8 @@ def update():
         for a in asteroids:
             if b.collide_pixel(a):
                 sounds.asteroid_explosion.play()
+                bullets.remove(b)
+                asteroids.remove(a)
 
     #nahodne vytvaranie asteroidov
     if random.randint(0, 150) == 5:
