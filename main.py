@@ -1,11 +1,13 @@
 import pgzrun
 
 from ship import Ship
+from asteroid import Asteroid
 
 WIDTH = 900
 HEIGHT = 500
 
 perfectShip = Ship(WIDTH/2, HEIGHT/2)
+asteroid = Asteroid()
 
 def on_key_down(key):
     #otacanie
@@ -37,5 +39,6 @@ def update():
 def draw():
     screen.clear()
     perfectShip.draw()
+    asteroid.draw()
 
 pgzrun.go()
